@@ -1,14 +1,16 @@
 <?php
 
+require_once 'Traits/HasOscar.php';
+
 require_once 'Models/Movie.php';
 require_once 'Models/Genre.php';
 
-$lotr = new Movie("Il Signore degli Anelli - La Compagnia dell'Anello", "Peter Jackson", 2001, 9.0, 178, new Genre(["Fantasy", "Adventure"]));
+$lotr = new Movie("Il Signore degli Anelli - La Compagnia dell'Anello", "Peter Jackson", 2001, 9.0, 178, new Genre(["Fantasy", "Adventure"]), true);
 $ironman = new Movie("Iron Man", "Jon Favreau", 2008, 7.9, 126, new Genre(["Comics", "Action"]));
 $starwars = new Movie("Star Wars: Episode I - The Phantom Menace", "George Lucas", 1999, 8.5, 136, new Genre(["Fantasy", "Adventure", "Sci-Fi"]));
 
-/* var_dump($lotr);
-var_dump($ironman);
+var_dump($lotr);
+/* var_dump($ironman);
 var_dump($starwars); */
 
 ?>

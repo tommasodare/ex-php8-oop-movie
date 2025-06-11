@@ -1,52 +1,15 @@
 <?php
 
-class Movie
-{
+require_once 'Models/Movie.php';
+require_once 'Models/Genre.php';
 
-    // Variabili d'istanza
-    public $title;
-    public $director;
-    public $release_year;
-    public $rating;
-    public $duration;
-    public $genre;
+$lotr = new Movie("Il Signore degli Anelli - La Compagnia dell'Anello", "Peter Jackson", 2001, 9.0, 178, new Genre(["Fantasy", "Adventure"]));
+$ironman = new Movie("Iron Man", "Jon Favreau", 2008, 7.9, 126, new Genre(["Comics", "Action"]));
+$starwars = new Movie("Star Wars: Episode I - The Phantom Menace", "George Lucas", 1999, 8.5, 136, new Genre(["Fantasy", "Adventure", "Sci-Fi"]));
 
-    // Costruttore
-    function __construct($_title, $_director, $_release_year, $_rating, $_duration, Genre $_genre)
-    {
-        $this->title = $_title;
-        $this->director = $_director;
-        $this->release_year = $_release_year;
-        $this->rating = $_rating;
-        $this->duration = $_duration;
-        $this->genre = $_genre;
-    }
-
-    // Metodo per ottenere il titolo del film
-    public function getMovieTitle()
-    {
-        return $this->title;
-    }
-}
-
-class Genre
-{
-
-    // Variabile d'istanza
-    public $name;
-
-    // Costruttore
-    function __construct($name)
-    {
-        $this->name = $name;
-    }
-}
-
-$lotr = new Movie("Il Signore degli Anelli - La Compagnia dell'Anello", "Peter Jackson", 2001, 9.0, 178, new Genre("Fantasy"));
-$ironman = new Movie("Iron Man", "Jon Favreau", 2008, 7.9, 126, new Genre("Comics"));
-
-var_dump($lotr);
+/* var_dump($lotr);
 var_dump($ironman);
+var_dump($starwars); */
 
 ?>
 
@@ -108,7 +71,7 @@ var_dump($ironman);
         <tbody>
             <?php
             // Display movie data in table rows
-            $movies = [$lotr, $ironman];
+            $movies = [$lotr, $ironman, $starwars];
             foreach ($movies as $movie) {
                 echo "<tr>";
                 echo "<td>{$movie->title}</td>";
@@ -116,7 +79,7 @@ var_dump($ironman);
                 echo "<td>{$movie->release_year}</td>";
                 echo "<td>{$movie->rating}/10</td>";
                 echo "<td>{$movie->duration}</td>";
-                echo "<td>{$movie->genre->name}</td>";
+                echo "<td>" . implode(", ", $movie->genre->name) . "</td>";
                 echo "</tr>";
             }
             ?>

@@ -68,6 +68,8 @@ var_dump($starwars); */
                 <th>Rating</th>
                 <th>Duration (min)</th>
                 <th>Genre</th>
+                <th>Oscar Winner</th>
+
             </tr>
         </thead>
         <tbody>
@@ -82,6 +84,7 @@ var_dump($starwars); */
                 echo "<td>{$movie->rating}/10</td>";
                 echo "<td>{$movie->duration}</td>";
                 echo "<td>" . implode(", ", $movie->genre->name) . "</td>";
+                echo "<td>" . ($movie->hasOscar() ? "Yes" : "No") . "</td>";
                 echo "</tr>";
             }
             ?>

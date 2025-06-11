@@ -9,15 +9,17 @@ class Movie
     public $release_year;
     public $rating;
     public $duration;
+    public $genre;
 
     // Costruttore
-    function __construct($title, $director, $release_year, $rating, $duration)
+    function __construct($_title, $_director, $_release_year, $_rating, $_duration, Genre $_genre)
     {
-        $this->title = $title;
-        $this->director = $director;
-        $this->release_year = $release_year;
-        $this->rating = $rating;
-        $this->duration = $duration;
+        $this->title = $_title;
+        $this->director = $_director;
+        $this->release_year = $_release_year;
+        $this->rating = $_rating;
+        $this->duration = $_duration;
+        $this->genre = $_genre;
     }
 
     // Metodo per ottenere il titolo del film
@@ -27,8 +29,21 @@ class Movie
     }
 }
 
-$lotr = new Movie("Il Signore degli Anelli - La Compagnia dell'Anello", "Peter Jackson", 2001, 9.0, 178);
-$ironman = new Movie("Iron Man", "Jon Favreau", 2008, 7.9, 126);
+class Genre
+{
+
+    // Variabile d'istanza
+    public $name;
+
+    // Costruttore
+    function __construct($name)
+    {
+        $this->name = $name;
+    }
+}
+
+$lotr = new Movie("Il Signore degli Anelli - La Compagnia dell'Anello", "Peter Jackson", 2001, 9.0, 178, new Genre("Fantasy"));
+$ironman = new Movie("Iron Man", "Jon Favreau", 2008, 7.9, 126, new Genre("Comics"));
 
 var_dump($lotr);
 var_dump($ironman);
@@ -87,6 +102,7 @@ var_dump($ironman);
                 <th>Release Year</th>
                 <th>Rating</th>
                 <th>Duration (min)</th>
+                <th>Genre</th>
             </tr>
         </thead>
         <tbody>
@@ -100,6 +116,7 @@ var_dump($ironman);
                 echo "<td>{$movie->release_year}</td>";
                 echo "<td>{$movie->rating}/10</td>";
                 echo "<td>{$movie->duration}</td>";
+                echo "<td>{$movie->genre->name}</td>";
                 echo "</tr>";
             }
             ?>
